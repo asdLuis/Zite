@@ -5,13 +5,16 @@ export default function Sidebar({ active, onNavigate }) {
   return (
     <aside className="sidebar">
       <div className="brand">
-        {identity.brandName}
-        <span>{identity.brandSuffix}</span>
+        <span className="brand-mark">{identity.brandName.charAt(0)}</span>
+        <span className="brand-full side-label">
+          {identity.brandName}
+          <span>{identity.brandSuffix}</span>
+        </span>
       </div>
 
       <Nav active={active} onNavigate={onNavigate} />
 
-      <div className="footer-note">
+      <div className="footer-note side-label">
         <span className="dot">●</span> {identity.status}
         <br />
         {identity.location}

@@ -3,6 +3,8 @@ import { navItems } from './data/profile.js'
 import Boot from './components/Boot.jsx'
 import Sidebar from './components/Sidebar.jsx'
 import Toast from './components/Toast.jsx'
+import Background from './components/Background.jsx'
+
 import CharacterSection from './components/sections/CharacterSection.jsx'
 import SkillTreeSection from './components/sections/SkillTreeSection.jsx'
 import QuestLogSection from './components/sections/QuestLogSection.jsx'
@@ -35,16 +37,14 @@ export default function App() {
   return (
     <>
       <Boot />
+      <Background />
       <div className="shell">
         <Sidebar active={active} onNavigate={handleNavigate} />
         <main>
           {active === 'character' && <CharacterSection />}
-          {active === 'stats' && <StatsSection active={active === 'stats'} />}
           {active === 'skills' && <SkillTreeSection />}
           {active === 'quests' && <QuestLogSection />}
-          {active === 'achievements' && <AchievementsSection />}
           {active === 'realms' && <RealmsSection />}
-          {active === 'about' && <AboutSection />}
           {active === 'contact' && <ContactSection />}
         </main>
       </div>

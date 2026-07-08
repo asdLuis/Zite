@@ -9,7 +9,8 @@ export default function Nav({ active, onNavigate }) {
             className={active === item.id ? 'active' : ''}
             onClick={() => onNavigate(item.id)}
           >
-            <span className="idx">{item.index}</span> {item.label}
+            <span className="idx">{item.index}</span>
+            <span className="side-label">{item.label}</span>
           </button>
         </li>
       ))}

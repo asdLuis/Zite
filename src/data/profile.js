@@ -1,14 +1,10 @@
-// ============================================================
-// EDIT THIS FILE to customize the entire portfolio.
-// Every section pulls its content from here — no need to touch
-// component code just to change text, stats, or links.
-// ============================================================
+import profilePhoto from "../public/profile.webp";
 
 export const identity = {
   brandName: "ZLUIS",
   brandSuffix: ".DEV",
   fullName: "Luis Isauro Zámano Morales",
-  initials: "LZ",
+  photo: profilePhoto,
   status: "ONLINE — OPEN TO WORK",
   location: "Querétaro, MX",
   tags: ["Backend", "Infra", "Cloud", "Gamedev", "Networking", "Systems Design", "Management", "ML", "Automation"],
@@ -25,27 +21,6 @@ export const character = {
     { k: "EXPERIENCE", v: "4 years" },
   ],
   resumeUrl: "#",
-};
-
-export const stats = {
-  cards: [
-    { num: "4", label: "Years Coding" },
-    { num: "27", label: "Projects Shipped" },
-    { num: "1,900+", label: "GitHub Contributions" },
-    { num: "12", label: "Technologies Used in Prod" },
-    { num: "6", label: "Certifications" },
-    { num: "3", label: "Hackathons Entered" },
-    { num: "99.2%", label: "Uptime, Personal Infra" },
-    { num: "180+", label: "LeetCode / Katas Solved" },
-  ],
-  proficiency: [
-    { label: "Backend Development", value: 92 },
-    { label: "Cloud & Infrastructure", value: 84 },
-    { label: "Networking", value: 76 },
-    { label: "Frontend Development", value: 68 },
-    { label: "DevOps / Automation", value: 80 },
-    { label: "Game Systems Programming", value: 55 },
-  ],
 };
 
 export const skillTree = [
@@ -193,18 +168,6 @@ export const quests = [
   },
 ];
 
-export const achievements = [
-  { icon: "🎓", title: "Graduated", desc: "B.Sc. Computer Science, awarded with honors.", date: "MAY 2026", locked: false },
-  { icon: "🚀", title: "First Deploy", desc: "Shipped first production application to real users.", date: "MAR 2024", locked: false },
-  { icon: "🌐", title: "Network Architect", desc: "Built and maintained a 12-node distributed server network.", date: "AUG 2024", locked: false },
-  { icon: "📡", title: "Certified", desc: "Completed AWS Cloud Practitioner certification.", date: "JAN 2025", locked: false },
-  { icon: "🏆", title: "Hackathon Finalist", desc: "Top 5 finish at regional university hackathon.", date: "OCT 2025", locked: false },
-  { icon: "🔧", title: "Open Source", desc: "Merged contributions into 4 open-source repositories.", date: "ONGOING", locked: false },
-  { icon: "💼", title: "First Offer", desc: "Land first full-time engineering role.", date: "LOCKED", locked: true },
-  { icon: "🛰️", title: "CCNA Certified", desc: "Complete Cisco networking certification.", date: "LOCKED", locked: true },
-  { icon: "🎮", title: "Shipped a Game", desc: "Release a complete multiplayer game to the public.", date: "LOCKED", locked: true },
-];
-
 export const realms = [
   { name: "GitHub", type: "DEV", stat: "1,900+", label: "contributions this year", url: "#" },
   { name: "LinkedIn", type: "NETWORK", stat: "500+", label: "professional connections", url: "#" },
@@ -228,21 +191,21 @@ export const about = {
 };
 
 export const contact = {
-  status: "AVAILABLE FOR FULL-TIME ROLES",
+  status: "AVAILABLE",
   heading: "Let's build something.",
-  body: "Open to backend, infrastructure, and platform engineering roles — remote or Querétaro-based. Always happy to talk about distributed systems, game networking, or why your Minecraft server keeps lagging.",
+  body: "Open to backend, infrastructure, and platform engineering roles. Always happy to talk about distributed systems, game networking, or why your Minecraft server keeps lagging.",
   links: [
-    { label: "Email", value: "alex.rivera@example.com", href: "mailto:alex.rivera@example.com" },
-    { label: "LinkedIn", value: "/in/alexrivera ↗", href: "#" },
-    { label: "GitHub", value: "/alexrivera ↗", href: "#" },
+    { label: "Email", value: "luisisaurozamano@gmail.com", href: "mailto:luisisaurozamano@gmail.com" },
+    { label: "LinkedIn", value: "/in/luisisaurozamano ↗", href: "https://www.linkedin.com/in/luis-isauro-zámano-morales-49a4b3216" },
+    { label: "GitHub", value: "/asdLuis ↗", href: "https://github.com/asdLuis" },
     { label: "Resume", value: "Download PDF ↓", href: "#" },
   ],
 };
 
 export const navItems = [
   { id: "character", index: "01", label: "Character" },
-  { id: "skills", index: "03", label: "Skill Tree" },
-  { id: "quests", index: "04", label: "Quest Log" },
-  { id: "realms", index: "06", label: "Connected Realms" },
-  { id: "contact", index: "08", label: "Contact" },
+  { id: "skills", index: "02", label: "Skill Tree" },
+  { id: "quests", index: "03", label: "Quest Log" },
+  { id: "realms", index: "04", label: "Connected Realms" },
+  { id: "contact", index: "05", label: "Contact" },
 ];

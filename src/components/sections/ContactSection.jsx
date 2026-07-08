@@ -3,9 +3,9 @@ import { contact } from '../../data/profile.js'
 export default function ContactSection() {
   return (
     <section className="section" id="contact">
-      <div className="eyebrow">08 / CONTACT</div>
+      <div className="eyebrow">05 / CONTACT</div>
       <h1 className="title">Initiate Connection</h1>
-      <p className="subtitle">Send a party invite. I usually respond within a day.</p>
+      <p className="subtitle">Send a party invite. I usually respond within a day or two.</p>
 
       <div className="contactcard">
         <div className="status">{contact.status}</div>

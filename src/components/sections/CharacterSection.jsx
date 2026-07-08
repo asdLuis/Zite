@@ -9,11 +9,22 @@ export default function CharacterSection() {
 
       <div className="charwrap">
         <div className="portrait">
-          <div className="avatar">{identity.initials}</div>
+          <img
+            className="avatar"
+            src={identity.photo}
+            alt={identity.fullName}
+          />
+
           <h2>{identity.fullName}</h2>
+
           <div className="role">{identity.role}</div>
+
           <div className="taglist">
-            {identity.tags.map((tag) => <span key={tag} className="tag">{tag}</span>)}
+            {identity.tags.map((tag) => (
+              <span key={tag} className="tag">
+                {tag}
+              </span>
+            ))}
           </div>
         </div>
 
