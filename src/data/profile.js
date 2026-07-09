@@ -278,4 +278,5 @@ export const navItems = [
   { id: "quests", index: "03", label: "Quest Log" },
   { id: "realms", index: "04", label: "Connected Realms" },
   { id: "contact", index: "05", label: "Contact" },
+  { id: 'achievements', index: '06', label: 'Achievements', requiresUnlock: true }
 ];

@@ -134,20 +134,41 @@ body{
 .brand-full{ font-family:var(--display); font-weight:700; font-size:20px; letter-spacing:2px; color:var(--text); }
 .brand-full span{color:var(--accent);}
 
-.navlist{list-style:none; display:flex; flex-direction:column; gap:2px; flex:1; width:100%;}
+.navlist{list-style:none; display:flex; flex-direction:column; gap:4px; flex:1; width:100%;}
 .navlist button{
-  all:unset; box-sizing:border-box; cursor:pointer; display:flex; align-items:center; gap:10px; width:100%;
-  font-family:var(--display); font-size:14px; letter-spacing:1px; color:var(--text-muted);
-  padding:10px 12px; border-radius:14px; border-left:2px solid transparent; white-space:nowrap;
-  transition:color 160ms var(--ease-out), background 160ms var(--ease-out), border-color 160ms var(--ease-out), transform 120ms var(--ease-out);
+  all:unset; box-sizing:border-box; cursor:pointer; 
+  display:flex; align-items:center; gap:14px; 
+  width:100%;
+  font-family:var(--display); 
+  font-size:15px; 
+  letter-spacing:1.2px; 
+  color:var(--text-muted);
+  padding:12px 20px; 
+  border-radius:12px; 
+  transition:all 250ms var(--ease-out);
+  position: relative;
 }
-/* Sidebar is always expanded now — show the name, hide the raw index. */
-.navlist button .idx{ display:none; }
-@media (hover:hover) and (pointer:fine){ .navlist button:hover{color:var(--text); background:var(--panel-2);} }
+
+/* Hover Effect: Soft glow/tint */
+@media (hover:hover) and (pointer:fine){ 
+  .navlist button:hover{
+    color:var(--text); 
+    background:rgba(255,255,255,0.03);
+  } 
+}
+
+/* Active State: The "Capsule" Highlight */
+.navlist button.active{
+  color:var(--accent); 
+  background:rgba(94, 234, 212, 0.08); /* Semi-transparent accent fill */
+  box-shadow: inset 0 0 0 1px rgba(94, 234, 212, 0.15);
+}
+
 .navlist button:active{transform:scale(0.98);}
-.navlist button.active{color:var(--accent); border-left-color:var(--accent); background:var(--panel-2);}
-.navlist button.active .idx{color:var(--accent);}
 .navlist button:focus-visible{outline:1px solid var(--accent); outline-offset:2px;}
+
+/* Hide index number but keep structure if you ever want it back */
+.navlist button .idx{ display:none; }
 
 .footer-note{width:100%; font-family:var(--mono); font-size:9px; color:var(--text-dim); letter-spacing:1px; margin-top:12px; line-height:1.6; text-align:left;}
 .footer-note .dot{color:var(--accent);}
@@ -485,4 +506,21 @@ h1.title{font-family:var(--display); font-weight:700; font-size:clamp(28px,4vw,4
   color: var(--amber);
   border-color: var(--amber-dim);
   background: rgba(245, 166, 35, 0.08);
+}
+
+/* ============================================================
+   IMPACT CAMERA SHAKE
+   ============================================================ */
+@keyframes pageImpact {
+  0%   { transform: translate(0, 0) rotate(0deg); filter: blur(0px); }
+  15%  { transform: translate(-22px, 12px) rotate(-1.5deg); filter: blur(2px); }
+  30%  { transform: translate(16px, -12px) rotate(1.5deg); filter: blur(0px); }
+  45%  { transform: translate(-10px, 8px) rotate(-0.5deg); }
+  60%  { transform: translate(8px, -5px) rotate(0.5deg); }
+  75%  { transform: translate(-4px, 3px) rotate(0deg); }
+  100% { transform: translate(0, 0) rotate(0deg); }
+}
+
+.shake-impact {
+  animation: pageImpact 0.5s cubic-bezier(0.23, 1, 0.32, 1) forwards;
 }
