@@ -170,12 +170,15 @@ export const quests = [
 ];
 
 export const realms = [
-  { name: "GitHub", type: "DEV", stat: "1,900+", label: "contributions this year", url: "#" },
-  { name: "LinkedIn", type: "NETWORK", stat: "500+", label: "professional connections", url: "#" },
-  { name: "Steam", type: "GAMING", stat: "2,100 hrs", label: "logged across 40+ titles", url: "#" },
-  { name: "League of Legends", type: "GAMING", stat: "Diamond II", label: "current ranked tier", url: "#" },
-  { name: "Minecraft", type: "GAMING / DEV", stat: "6 yrs", label: "running self-hosted servers", url: "#" },
-  { name: "Discord", type: "COMMUNITY", stat: "3", label: "dev communities moderated", url: "#" },
+  { name: "GitHub", type: "DEV", stat: "6+", label: "years coding", url: "https://github.com/asdLuis" },
+  { name: "Steam", type: "GAMING", stat: "+1,500 hrs", label: "logged across 40+ titles", url: "https://steamcommunity.com/profiles/76561198981314189/" },
+  { name: "League of Legends", type: "GAMING", stat: "Master", label: "highest ranked tier", url: "https://op.gg/lol/summoners/lan/zLuis-qwq" },
+  { name: "Valorant", type: "GAMING", stat: "26%", label: "headshot percentage", url: "https://op.gg/valorant/profile/zLuis-qwq" },
+  { name: "Minecraft", type: "GAMING", stat: "+5,000 hrs", label: "letting creativity run wild", url: "https://sky.shiiyu.moe/stats/zLuis/Pomegranate#Gear" },
+  { name: "Discord", type: "COMMUNITY", stat: "3", label: "communities moderated", url: "https://discord.com/users/709945238488123456"},
+  { name: "Spotify", type: "MUSIC", stat: "Post Malone", label: "most listened artist", url: "https://open.spotify.com/user/jodarte?si=4a53506fd4c047ae"},
+  { name: "LinkedIn", type: "COMMUNITY", stat: "+200", label: "professional connections", url: "https://www.linkedin.com/in/luis-isauro-zámano-morales-49a4b3216"},
+  { name: "Super Smash Bros", type: "GAMING", stat: "Isabelle", label: "main fighter", url: "https://www.smashbros.com/en_US/fighter/68.html"},
 ];
 
 export const about = {
@@ -194,9 +197,9 @@ export const about = {
 export const contact = {
   status: "AVAILABLE",
   heading: "Let's build something.",
-  body: "Open to backend, infrastructure, and platform engineering roles. Always happy to talk about distributed systems, game networking, or why your Minecraft server keeps lagging.",
+  body: "Open to backend, infrastructure, and platform engineering roles. Always happy to talk about ideas, game development, or why your Minecraft server keeps lagging.",
   links: [
-    { label: "Email", value: "luisisaurozamano@gmail.com", href: "mailto:luisisaurozamano@gmail.com" },
+    { label: "Email", value: "luisisaurozamano@gmail.com ↗", href: "mailto:luisisaurozamano@gmail.com" },
     { label: "LinkedIn", value: "/in/luisisaurozamano ↗", href: "https://www.linkedin.com/in/luis-isauro-zámano-morales-49a4b3216" },
     { label: "GitHub", value: "/asdLuis ↗", href: "https://github.com/asdLuis" },
     { label: "Discord", value: "zetaLuis ↗", href: " https://discord.com/users/430123140157276161" },

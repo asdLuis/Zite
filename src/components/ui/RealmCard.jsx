@@ -1,6 +1,6 @@
 export default function RealmCard({ name, type, stat, label, url }) {
   return (
-    <a className="realm" href={url}>
+    <a className="realm" href={url} target="_blank">
       <div className="rhead">
         <span className="rname">{name}</span>
         <span className="rtype">{type}</span>

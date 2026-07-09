@@ -48,7 +48,7 @@ export default function App() {
           {active === 'contact' && <ContactSection />}
         </main>
       </div>
-      <Toast show={showToast} title="ACHIEVEMENT UNLOCKED" subtitle="Explorer — visited every section" />
+      <Toast trigger={explorerFired} title="ACHIEVEMENT UNLOCKED" subtitle="Explorer — visited every section"/>
     </>
   )
 }
