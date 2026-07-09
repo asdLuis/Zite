@@ -102,7 +102,7 @@ body{
 /* ============================================================
    LAYOUT SHELL
    ============================================================ */
-.shell{ display:grid; grid-template-columns:auto 1fr; min-height:100vh; }
+.shell{ display:grid; grid-template-columns:260px 1fr; min-height:100vh; }
 @media (max-width: 900px){ .shell{grid-template-columns:1fr;} }
 
 .sidebar{
@@ -116,19 +116,11 @@ body{
   margin:16px 0 16px 16px;
   border-radius:26px;
   display:flex; flex-direction:column;
-  align-items:center;
-  padding:22px 14px;
+  align-items:stretch;
+  padding:22px 18px;
   z-index:50;
-  width:84px;
-  overflow:hidden;
-  transition:width 420ms var(--ease-drawer), padding 420ms var(--ease-drawer), align-items 0ms 420ms;
+  width:100%;
 }
-@media (min-width:901px){
-  .sidebar:hover{
-    width:260px; padding:22px 18px; align-items:stretch; transition:width 420ms var(--ease-drawer), padding 420ms var(--ease-drawer), align-items 0ms;
-  }
-}
-@media (prefers-reduced-motion: reduce){ .sidebar{ transition:none; } }
 
 @media (max-width: 900px){
   .sidebar{position:relative; top:0; height:auto; width:auto; margin:12px; border-radius:20px; flex-direction:row; align-items:center; overflow-x:auto; padding:14px 16px !important; gap:14px;}
@@ -137,56 +129,30 @@ body{
   .navlist button{justify-content:flex-start !important; padding:10px 12px !important;}
 }
 
-/* Labels that hide while the rail is collapsed. Fade out fast on collapse,
-   fade in with a short delay on expand so text never "pops" before the
-   rail has finished widening. Inline labels (nav/brand) collapse via
-   max-width; the stacked rank-details block collapses via max-height. */
-.side-label{ opacity:1; max-width:200px; overflow:hidden; transition:opacity 140ms var(--ease-out), max-width 420ms var(--ease-drawer); white-space:nowrap; }
-@media (min-width:901px){
-  .sidebar:not(:hover) .side-label{ opacity:0; max-width:0; pointer-events:none; }
-  .sidebar:hover .side-label{ transition-delay:140ms; }
-}
-
-.brand{ display:flex; align-items:center; justify-content:center; height:26px; margin-bottom:20px; width:100%; }
-@media (min-width:901px){ .sidebar:hover .brand{ justify-content:flex-start; } }
-.brand-mark{ font-family:var(--display); font-weight:700; font-size:20px; color:var(--accent); flex-shrink:0; transition:opacity 140ms var(--ease-out); }
+.brand{ display:flex; align-items:center; height:26px; margin-bottom:20px; width:100%; }
+.brand-mark{ display:none; }
 .brand-full{ font-family:var(--display); font-weight:700; font-size:20px; letter-spacing:2px; color:var(--text); }
 .brand-full span{color:var(--accent);}
-/* Collapsed = mark only ("Z"). Expanded = full wordmark only — never both. */
-@media (min-width:901px){
-  .sidebar:hover .brand-mark{ opacity:0; width:0; overflow:hidden; }
-}
 
 .navlist{list-style:none; display:flex; flex-direction:column; gap:2px; flex:1; width:100%;}
 .navlist button{
-  all:unset; box-sizing:border-box; cursor:pointer; display:flex; align-items:center; justify-content:center; gap:10px; width:100%;
+  all:unset; box-sizing:border-box; cursor:pointer; display:flex; align-items:center; gap:10px; width:100%;
   font-family:var(--display); font-size:14px; letter-spacing:1px; color:var(--text-muted);
-  padding:10px 0; border-radius:14px; border-left:2px solid transparent; white-space:nowrap;
-  transition:color 160ms var(--ease-out), background 160ms var(--ease-out), border-color 160ms var(--ease-out), transform 120ms var(--ease-out), justify-content 0ms 420ms, padding 0ms 420ms;
+  padding:10px 12px; border-radius:14px; border-left:2px solid transparent; white-space:nowrap;
+  transition:color 160ms var(--ease-out), background 160ms var(--ease-out), border-color 160ms var(--ease-out), transform 120ms var(--ease-out);
 }
-@media (min-width:901px){
-  .sidebar:hover .navlist button{
-    justify-content:flex-start; padding:10px 12px; transition:color 160ms var(--ease-out), background 160ms var(--ease-out), border-color 160ms var(--ease-out), transform 120ms var(--ease-out), justify-content 0ms, padding 0ms;
-  }
-}
-/* Collapsed = index number only. Expanded = name only — never both. */
-.navlist button .idx{font-family:var(--mono); font-size:11px; color:var(--text-dim); flex-shrink:0; transition:opacity 140ms var(--ease-out), width 0ms 420ms;}
-@media (min-width:901px){
-  .sidebar:hover .navlist button .idx{
-    opacity:0; width:0; overflow:hidden; transition:opacity 140ms var(--ease-out), width 0ms;
-  }
-}
+/* Sidebar is always expanded now — show the name, hide the raw index. */
+.navlist button .idx{ display:none; }
 @media (hover:hover) and (pointer:fine){ .navlist button:hover{color:var(--text); background:var(--panel-2);} }
 .navlist button:active{transform:scale(0.98);}
 .navlist button.active{color:var(--accent); border-left-color:var(--accent); background:var(--panel-2);}
 .navlist button.active .idx{color:var(--accent);}
 .navlist button:focus-visible{outline:1px solid var(--accent); outline-offset:2px;}
 
-.footer-note{width:100%; font-family:var(--mono); font-size:9px; color:var(--text-dim); letter-spacing:1px; margin-top:12px; line-height:1.6; max-height:60px; text-align:left; transition:opacity 140ms var(--ease-out), max-height 420ms var(--ease-drawer);}
+.footer-note{width:100%; font-family:var(--mono); font-size:9px; color:var(--text-dim); letter-spacing:1px; margin-top:12px; line-height:1.6; text-align:left;}
 .footer-note .dot{color:var(--accent);}
-@media (min-width:901px){ .sidebar:not(:hover) .footer-note{ max-height:0; opacity:0; margin-top:0; } }
 
-main{padding:40px clamp(20px,4vw,64px); max-width:1180px;}
+main{padding:40px clamp(20px,4vw,64px); max-width:1180px; margin:0 auto;}
 .section{
   animation:fadeIn 280ms var(--ease-out);
   transition:opacity 220ms var(--ease-in-out), transform 220ms var(--ease-in-out);
@@ -408,6 +374,8 @@ h1.title{font-family:var(--display); font-weight:700; font-size:clamp(28px,4vw,4
   .toast-mounted, .toast-enter, .toast-leave{ transition:opacity 200ms linear; transform:none; }
 }
 
+/* Item-slot bevel — light top-left edge, dark bottom-right, like a
+   Minecraft inventory slot holding the achievement icon. */
 .toast .ticon{
   width:36px; height:36px; flex-shrink:0; display:flex; align-items:center; justify-content:center;
   font-size:18px; border-radius:6px; color:var(--amber);
