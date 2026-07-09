@@ -1,9 +1,16 @@
-export default function Quest({ quest }) {
+export default function Quest({ quest, onToggle }) {
   // Helper to dynamically assign the color class based on the status text
   const statusClass = quest.status.toLowerCase() === 'ongoing' ? 'status-ongoing' : 'status-completed'
 
   return (
-    <details className="quest" open={quest.openByDefault}>
+    <details className="quest" 
+    open={quest.openByDefault}
+    onToggle={(e) => {
+      if (e.target.open) {
+        onToggle(); // Fire only when opening
+      }
+    }}
+    >
       <summary>
         <div className="qleft">
           <span className="qtag">{quest.tag}</span>

@@ -524,3 +524,77 @@ h1.title{font-family:var(--display); font-weight:700; font-size:clamp(28px,4vw,4
 .shake-impact {
   animation: pageImpact 0.5s cubic-bezier(0.23, 1, 0.32, 1) forwards;
 }
+
+/* --- Achievements Section Styles --- */
+
+/* 1. Grid Layout */
+.steam-grid {
+  display: grid !important;
+  grid-template-columns: repeat(3, 1fr) !important;
+  gap: 16px !important;
+  margin-top: 40px !important;
+  width: 100% !important;
+}
+
+/* 2. Card Base (The "Capsule" Look) */
+.steam-card {
+  position: relative;
+  padding: 24px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  min-height: 140px;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.3s ease;
+}
+
+/* 3. Unlocked State (Active Tab Style) */
+.steam-card.unlocked {
+  background: rgba(94, 234, 212, 0.06); 
+  border: 1px solid rgba(94, 234, 212, 0.3);
+}
+
+.steam-card.unlocked h3 { 
+  color: var(--accent); 
+}
+
+/* 4. Locked State (Standard) */
+.steam-card.locked {
+  background: rgba(255, 255, 255, 0.01);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  filter: grayscale(1);
+}
+
+/* 5. Secret Achievement ("???" - Locked) */
+.steam-card[data-id="secret_master"].locked {
+  filter: blur(6px) grayscale(1);
+  user-select: none;
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+/* 6. Secret Achievement ("???" - Unlocked / Golden) */
+.steam-card[data-id="secret_master"].unlocked {
+  background: linear-gradient(135deg, rgba(255, 215, 0, 0.15) 0%, rgba(255, 215, 0, 0.05) 100%);
+  border: 1px solid rgba(255, 215, 0, 0.4);
+}
+
+.steam-card[data-id="secret_master"].unlocked h3 { 
+  color: #FFD700; 
+}
+
+/* 7. Typography */
+.steam-card h3 { 
+  margin: 0 0 8px 0; 
+  font-size: 16px; 
+  letter-spacing: 0.5px;
+  color: var(--text);
+}
+
+.steam-card p { 
+  font-size: 13px; 
+  color: var(--text-muted); 
+  line-height: 1.5;
+  margin: 0;
+}

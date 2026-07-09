@@ -1,7 +1,14 @@
 import { identity, character } from '../../data/profile.js'
 import FlipCard from '../ui/FlipCard.jsx'
 
-export default function CharacterSection() {
+export default function CharacterSection({ handleUnlock }) {
+  
+  const handleInspect = () => {
+    // Triggers the Artisan achievement
+    handleUnlock('artist', 'ACHIEVEMENT UNLOCKED', 'Artisan — Inspected the masterpiece')
+    // ... insert your existing 3D model inspection logic here
+  }
+
   return (
     <section className="section" id="character">
       <div className="eyebrow">01 / CHARACTER PROFILE</div>
@@ -13,18 +20,16 @@ export default function CharacterSection() {
           className="portrait"
           backClassName="portrait portrait-back"
           front={
-            <>
+            <div onClick={handleInspect} style={{ cursor: 'pointer' }}>
               <img className="avatar" src={identity.photo} alt={identity.fullName} />
               <h2>{identity.fullName}</h2>
               <div className="role">{identity.role}</div>
               <div className="taglist">
                 {identity.tags.map((tag) => (
-                  <span key={tag} className="tag">
-                    {tag}
-                  </span>
+                  <span key={tag} className="tag">{tag}</span>
                 ))}
               </div>
-            </>
+            </div>
           }
           back={
             <div className="card-back">

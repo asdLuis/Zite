@@ -280,3 +280,23 @@ export const navItems = [
   { id: "contact", index: "05", label: "Contact" },
   { id: 'achievements', index: '06', label: 'Achievements', requiresUnlock: true }
 ];
+
+export const achievements = [
+  // --- TIER 1 ---
+  { id: 'explorer', title: 'Cartographer', desc: 'Visited every core section of the site.' },
+  { id: 'night_owl', title: 'Night Owl', desc: 'Browsed the logs between 1 AM and 5 AM.' },
+  
+  // --- TIER 2 ---
+  { id: 'dev_mode', title: 'Dev Mode', desc: 'Opened the developer console while browsing.' },
+  { id: 'fullstack', title: 'Fullstack Journeyman', desc: 'Spent more than 60 seconds analyzing the Skill Tree.' },
+  
+  // --- TIER 3 ---
+  { id: 'completionist', title: 'Completionist', desc: 'Expanded every single quest in the log.' },
+  { id: 'artist', title: 'Artisan', desc: 'Spent time inspecting the 3D model showcase.' },
+  
+  // --- TIER 4 ---
+  { id: 'konami', title: 'Cheat Code', desc: 'Activated the hidden protocol (Konami Code).' },
+  
+  // --- SECRET ---
+  { id: 'secret_master', title: '???', desc: 'Completed all other objectives.' }
+];
