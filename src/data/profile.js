@@ -1,4 +1,5 @@
 import profilePhoto from "../public/profile.webp";
+import resume from "../public/LuisZamano_CV_EN_2026.pdf";
 
 export const identity = {
   brandName: "ZLUIS",
@@ -20,7 +21,7 @@ export const character = {
     { k: "WORKING ON", v: "System Building & Cybersecurity" },
     { k: "EXPERIENCE", v: "4 years" },
   ],
-  resumeUrl: "#",
+  resumeUrl: resume,
 };
 
 export const skillTree = [
@@ -198,7 +199,7 @@ export const contact = {
     { label: "Email", value: "luisisaurozamano@gmail.com", href: "mailto:luisisaurozamano@gmail.com" },
     { label: "LinkedIn", value: "/in/luisisaurozamano ↗", href: "https://www.linkedin.com/in/luis-isauro-zámano-morales-49a4b3216" },
     { label: "GitHub", value: "/asdLuis ↗", href: "https://github.com/asdLuis" },
-    { label: "Resume", value: "Download PDF ↓", href: "#" },
+    { label: "Discord", value: "zetaLuis ↗", href: " https://discord.com/users/430123140157276161" },
   ],
 };
 

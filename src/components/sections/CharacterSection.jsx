@@ -39,7 +39,13 @@ export default function CharacterSection() {
             ))}
           </div>
           <div className="cta-row">
-            <a href={character.resumeUrl} className="btn btn-primary">Download Resume ↓</a>
+            <a href={character.resumeUrl} target="_blank" rel="noopener noreferrer" className="btn btn-primary">
+              View Resume ↗
+            </a>
+
+            <a href={character.resumeUrl} download="Luis_Isauro_Zamano_Resume.pdf" className="btn btn-ghost">
+              Download PDF ↓
+            </a>
           </div>
         </div>
       </div>
