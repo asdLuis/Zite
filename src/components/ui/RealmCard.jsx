@@ -2,7 +2,7 @@ import TiltCard from './TiltCard.jsx'
 
 export default function RealmCard({ name, type, stat, label, url }) {
   return (
-    <TiltCard as="a" href={url} className="realm">
+    <TiltCard as="a" href={url} className="realm" target="_blank">
       <div className="rhead">
         <span className="rname">{name}</span>
         <span className="rtype">{type}</span>

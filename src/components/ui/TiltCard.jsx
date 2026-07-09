@@ -115,6 +115,8 @@ export default function TiltCard({
       {glare && !prefersReduced && (
         <motion.div
           aria-hidden="true"
+          animate={{ opacity: hovering ? 1 : 0 }} /* FIX: Hides the light when not hovering */
+          transition={{ duration: 0.2 }} /* Smooth fade in/out */
           style={{
             position: 'absolute',
             inset: 0,

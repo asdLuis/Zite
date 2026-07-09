@@ -8,12 +8,11 @@ export default function ContactSection() {
       <p className="subtitle">Send a party invite. I usually respond within a day or two.</p>
 
       <div className="contactcard">
-        <div className="status">{contact.status}</div>
         <h2>{contact.heading}</h2>
         <p>{contact.body}</p>
         <div className="contact-links">
           {contact.links.map((l) => (
-            <a key={l.label} href={l.href}>
+            <a key={l.label} href={l.href} target="_blank">
               <span>{l.label}</span>
               <span className="val">{l.value}</span>
             </a>

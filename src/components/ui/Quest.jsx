@@ -1,4 +1,7 @@
 export default function Quest({ quest }) {
+  // Helper to dynamically assign the color class based on the status text
+  const statusClass = quest.status.toLowerCase() === 'ongoing' ? 'status-ongoing' : 'status-completed'
+
   return (
     <details className="quest" open={quest.openByDefault}>
       <summary>
@@ -35,15 +38,31 @@ export default function Quest({ quest }) {
         {quest.lessons && (
           <div className="row"><div className="k">LESSONS</div><div className="v">{quest.lessons}</div></div>
         )}
-        {quest.future && (
-          <div className="row"><div className="k">FUTURE</div><div className="v">{quest.future}</div></div>
-        )}
-        <div className="row"><div className="k">STATUS</div><div className="v">{quest.status}</div></div>
-        {(quest.github || quest.demo || quest.writeup) && (
+        
+        {/* UPDATED STATUS ROW */}
+        <div className="row">
+          <div className="k">STATUS</div>
+          <div className="v">
+            <span className={`qtag ${statusClass}`}>
+              {quest.status}
+            </span>
+          </div>
+        </div>
+        
+        {(quest.github || quest.demo || quest.writeup || quest.front) && (
           <div className="qlinks">
-            {quest.github && <a className="btn btn-ghost" href={quest.github}>GitHub ↗</a>}
-            {quest.demo && <a className="btn btn-ghost" href={quest.demo}>Live Demo ↗</a>}
-            {quest.writeup && <a className="btn btn-ghost" href={quest.writeup}>Write-up ↗</a>}
+            {quest.github && <a className="btn btn-ghost" href={quest.github} target="_blank">
+              Repository ↗
+            </a>}
+            {quest.front && <a className="btn btn-ghost" href={quest.front} target="_blank">
+              Frontend ↗
+            </a>}
+            {quest.demo && <a className="btn btn-ghost" href={quest.demo} target="_blank">
+              Live Demo ↗
+            </a>}
+            {quest.writeup && <a className="btn btn-ghost" href={quest.writeup} target="_blank">
+              Write-up ↗
+            </a>}
           </div>
         )}
       </div>

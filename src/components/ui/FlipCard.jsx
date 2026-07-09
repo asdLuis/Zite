@@ -1,17 +1,6 @@
 import { useRef, useState } from 'react'
 import { motion, useMotionValue, useSpring, useTransform } from 'motion/react'
 
-// A card that tilts toward the cursor, has a thin animated holo border
-// ring (not a full-surface sheen), and flips 180° on click. Either face
-// can be clicked to flip back.
-//
-// Usage:
-//   <FlipCard
-//     className="portrait"
-//     backClassName="portrait portrait-back"   // optional, defaults to className
-//     front={<>...front content...</>}
-//     back={<>...back content...</>}
-//   />
 export default function FlipCard({
   front,
   back,
