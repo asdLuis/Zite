@@ -153,14 +153,10 @@ body{
 .footer-note .dot{color:var(--accent);}
 
 main{padding:40px clamp(20px,4vw,64px); max-width:1180px; margin:0 auto;}
-.section{
-  animation:fadeIn 280ms var(--ease-out);
-  transition:opacity 220ms var(--ease-in-out), transform 220ms var(--ease-in-out);
-}
-@keyframes fadeIn{from{opacity:0; transform:translateY(8px);} to{opacity:1; transform:translateY(0);}}
-/* Applied by App.jsx for a beat before a section unmounts, so switching
-   sections fades out instead of just vanishing. */
-.section.leaving{ opacity:0 !important; transform:translateY(-8px) !important; animation:none !important; }
+/* Section enter/exit is now handled by Motion's AnimatePresence in
+   App.jsx (real 3D transform + spring-friendly easing on unmount, not
+   just a CSS class toggle). .section itself is just a layout container. */
+.section{ display:block; }
 
 /* Stagger: cards inside a freshly-mounted section cascade in instead of
    popping together. Kept short (30-45ms/item) so it never feels slow. */
@@ -211,12 +207,31 @@ h1.title{font-family:var(--display); font-weight:700; font-size:clamp(28px,4vw,4
 .portrait{ border:1px solid var(--glass-border); background:var(--glass-bg); backdrop-filter:blur(20px) saturate(160%); -webkit-backdrop-filter:blur(20px) saturate(160%); border-radius:var(--radius-lg); box-shadow:inset 0 1px 0 var(--glass-highlight), 0 8px 24px -12px rgba(0,0,0,.5); padding:22px; text-align:center; position:relative; overflow:hidden; }
 .portrait::before{ content:''; position:absolute; top:-40%; left:-40%; width:180%; height:180%; background:radial-gradient(circle at center, rgba(94,234,212,.06), transparent 60%); animation:pulse 5s ease-in-out infinite; }
 @keyframes pulse{0%,100%{opacity:.5;}50%{opacity:1;}}
-.avatar{ width:120px; height:120px; border-radius:50%; background:linear-gradient(145deg, #1a2330, #0c1017); border:1px solid var(--line); display:flex; align-items:center; justify-content:center; font-family:var(--display); font-size:40px; color:var(--accent); margin:0 auto 14px; position:relative; z-index:1; }
+.avatar{ width:120px; height:120px; border-radius:50%; object-fit:cover; background:linear-gradient(145deg, #1a2330, #0c1017); border:1px solid var(--line); display:block; margin:0 auto 14px; position:relative; z-index:1; }
+
+.card-back{
+  height:100%; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:14px;
+  background-image:repeating-linear-gradient(135deg, rgba(255,255,255,0.02) 0 2px, transparent 2px 14px);
+}
+.card-back-emblem{ position:relative; width:72px; height:72px; display:flex; align-items:center; justify-content:center; color:var(--accent-dim); }
+.card-back-emblem svg{ position:absolute; inset:0; width:100%; height:100%; }
+.card-back-emblem span{ font-family:var(--display); font-weight:700; font-size:26px; color:var(--accent); }
+.card-back-wordmark{ font-family:var(--display); font-weight:700; font-size:17px; letter-spacing:3px; color:var(--text); }
+.card-back-wordmark span{ color:var(--accent); }
+.card-back-hint{ font-family:var(--mono); font-size:10px; letter-spacing:1px; color:var(--text-dim); }
 .status-dot{position:relative; z-index:1; display:inline-flex; align-items:center; gap:6px; font-family:var(--mono); font-size:11px; color:var(--accent); margin-bottom:10px;}
 .status-dot::before{content:''; width:6px; height:6px; border-radius:50%; background:var(--accent); box-shadow:0 0 8px var(--accent); animation:blink 1.6s ease-in-out infinite;}
 @keyframes blink{50%{opacity:.3;}}
 .portrait h2{position:relative; z-index:1; font-family:var(--display); font-size:22px; letter-spacing:1px;}
 .portrait .role{position:relative; z-index:1; color:var(--text-muted); font-size:13px; margin-top:2px;}
+
+/* Solid back face — no glass translucency, so the aurora/spotlight behind
+   the page doesn't bleed through while the card is flipped. */
+.portrait-back{
+  background:rgba(9,12,18,0.98);
+  backdrop-filter:none;
+  -webkit-backdrop-filter:none;
+}
 .taglist{position:relative; z-index:1; display:flex; flex-wrap:wrap; gap:6px; justify-content:center; margin-top:16px;}
 .tag{font-family:var(--mono); font-size:10px; color:var(--text-muted); border:1px solid var(--line); padding:3px 8px; border-radius:2px;}
 

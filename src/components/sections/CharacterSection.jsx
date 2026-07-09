@@ -1,4 +1,5 @@
 import { identity, character } from '../../data/profile.js'
+import FlipCard from '../ui/FlipCard.jsx'
 
 export default function CharacterSection() {
   return (
@@ -8,25 +9,39 @@ export default function CharacterSection() {
       <p className="subtitle">The short version of who I am, at a glance, if anyone who has thirty seconds and a coffee.</p>
 
       <div className="charwrap">
-        <div className="portrait">
-          <img
-            className="avatar"
-            src={identity.photo}
-            alt={identity.fullName}
-          />
-
-          <h2>{identity.fullName}</h2>
-
-          <div className="role">{identity.role}</div>
-
-          <div className="taglist">
-            {identity.tags.map((tag) => (
-              <span key={tag} className="tag">
-                {tag}
-              </span>
-            ))}
-          </div>
-        </div>
+        <FlipCard
+          className="portrait"
+          backClassName="portrait portrait-back"
+          front={
+            <>
+              <img className="avatar" src={identity.photo} alt={identity.fullName} />
+              <h2>{identity.fullName}</h2>
+              <div className="role">{identity.role}</div>
+              <div className="taglist">
+                {identity.tags.map((tag) => (
+                  <span key={tag} className="tag">
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            </>
+          }
+          back={
+            <div className="card-back">
+              <div className="card-back-emblem">
+                <svg viewBox="0 0 64 64">
+                  <polygon points="32,3 58,17.5 58,46.5 32,61 6,46.5 6,17.5" fill="none" stroke="currentColor" strokeWidth="1.5" />
+                </svg>
+                <span>{identity.brandName.charAt(0)}</span>
+              </div>
+              <div className="card-back-wordmark">
+                {identity.brandName}
+                <span>{identity.brandSuffix}</span>
+              </div>
+              <div className="card-back-hint">You miss 100% of the shots you don't take</div>
+            </div>
+          }
+        />
 
         <div className="infoblock">
           <p className="lead">{character.lead}</p>
@@ -42,7 +57,6 @@ export default function CharacterSection() {
             <a href={character.resumeUrl} target="_blank" rel="noopener noreferrer" className="btn btn-primary">
               View Resume ↗
             </a>
-
             <a href={character.resumeUrl} download="Luis_Isauro_Zamano_Resume.pdf" className="btn btn-ghost">
               Download PDF ↓
             </a>
