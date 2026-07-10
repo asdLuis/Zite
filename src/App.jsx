@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { AnimatePresence, motion } from 'motion/react'
+import { Analytics } from '@vercel/analytics/react'
 import { achievements } from './data/profile.js'
 import Boot from './components/Boot.jsx'
 import Background from './components/Background.jsx'
@@ -116,6 +117,7 @@ export default function App() {
       </div>
       
       <Toast trigger={latestAchievement?.timestamp} title={latestAchievement?.title} subtitle={latestAchievement?.subtitle} />
+      <Analytics />
     </>
   )
 }
