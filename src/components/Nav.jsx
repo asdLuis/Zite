@@ -20,7 +20,7 @@ export default function Nav({ active, onNavigate, hasAchievements = false }) {
             style={{ overflow: 'hidden' }}
           >
             <button
-              className={active === item.id ? 'active' : ''}
+              className={`${active === item.id ? 'active' : ''} ${item.id === 'achievements' ? 'nav-achievements' : ''}`}
               onClick={() => onNavigate(item.id)}
             >
               <span className="idx">{item.index}</span>

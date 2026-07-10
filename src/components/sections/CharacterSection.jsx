@@ -4,9 +4,7 @@ import FlipCard from '../ui/FlipCard.jsx'
 export default function CharacterSection({ handleUnlock }) {
   
   const handleInspect = () => {
-    // Triggers the Artisan achievement
     handleUnlock('artist', 'ACHIEVEMENT UNLOCKED', 'Artisan — Inspected the masterpiece')
-    // ... insert your existing 3D model inspection logic here
   }
 
   return (

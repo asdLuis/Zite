@@ -153,6 +153,7 @@ export const quests = [
     status: "Completed",
     front: "https://github.com/asdLuis/notaria38-frontend",
     github: "https://github.com/asdLuis/notaria38-backend",
+    writeup: "https://sunrise-bookcase-985.notion.site/PIXEL-IT-11e17dd7c0194cc29acaeabc9bbf29e6",
     openByDefault: false,
   },
   {
@@ -282,21 +283,12 @@ export const navItems = [
 ];
 
 export const achievements = [
-  // --- TIER 1 ---
   { id: 'explorer', title: 'Cartographer', desc: 'Visited every core section of the site.' },
   { id: 'night_owl', title: 'Night Owl', desc: 'Browsed the logs between 1 AM and 5 AM.' },
-  
-  // --- TIER 2 ---
   { id: 'dev_mode', title: 'Dev Mode', desc: 'Opened the developer console while browsing.' },
   { id: 'fullstack', title: 'Fullstack Journeyman', desc: 'Spent more than 60 seconds analyzing the Skill Tree.' },
-  
-  // --- TIER 3 ---
   { id: 'completionist', title: 'Completionist', desc: 'Expanded every single quest in the log.' },
   { id: 'artist', title: 'Artisan', desc: 'Spent time inspecting the 3D model showcase.' },
-  
-  // --- TIER 4 ---
-  { id: 'konami', title: 'Cheat Code', desc: 'Activated the hidden protocol (Konami Code).' },
-  
-  // --- SECRET ---
+  { id: 'konami', title: 'Cheat Code', desc: 'Activated the hidden protocol.' },
   { id: 'secret_master', title: '???', desc: 'Completed all other objectives.' }
 ];
