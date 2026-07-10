@@ -1,5 +1,5 @@
-import profilePhoto from "../public/profile.webp";
-import resume from "../public/LuisZamano_CV_EN_2026.pdf";
+import profilePhoto from "../../public/profile.webp";
+import resume from "../../public/LuisZamano_CV_EN_2026.pdf";
 
 export const identity = {
   brandName: "ZLUIS",
