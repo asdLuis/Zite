@@ -1,6 +1,6 @@
 # Operator Portfolio — React
 
-A game-profile-style software engineering portfolio, built with React + Vite.
+A game-profile-style software engineering portfolio, built with React + Vite!
 
 ## Getting started
 
