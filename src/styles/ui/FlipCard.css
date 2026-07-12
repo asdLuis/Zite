@@ -1,0 +1,38 @@
+.flip-card-wrapper {
+  position: relative;
+  height: 100%;
+  min-height: 260px;
+  cursor: pointer;
+}
+
+.flip-card-face {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+}
+
+.flip-card-face-inner {
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.flip-card-glare {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.flip-card-holo {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background-origin: border-box;
+  background-clip: border-box;
+  background-size: 300% 300%;
+  -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+}

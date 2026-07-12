@@ -1,0 +1,75 @@
+.boot-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  transition: opacity 0.8s cubic-bezier(0.77, 0, 0.175, 1);
+  background: radial-gradient(circle at 50% 40%, rgba(20, 25, 35, 0.95) 0%, #020305 70%);
+}
+
+.boot-overlay.boot-zooming,
+.boot-overlay.boot-done {
+  opacity: 0;
+}
+
+.boot-hole {
+  width: 65vw;
+  height: 65vh;
+  border-radius: 12px;
+  background: #0a0e14;
+  position: relative;
+  overflow: hidden;
+  transition: background 0.6s ease;
+  box-shadow: 0 0 0 9999px #020305, 
+              0 20px 100px rgba(94, 234, 212, 0.15),
+              inset 0 0 20px rgba(0, 0, 0, 0.8);
+}
+
+.boot-overlay.boot-reveal .boot-hole,
+.boot-overlay.boot-zooming .boot-hole {
+  background: transparent;
+}
+
+.boot-glare {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.boot-cli {
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+  padding: 40px;
+  font-family: var(--mono);
+  font-size: 15px;
+  color: var(--accent);
+  line-height: 1.6;
+  text-shadow: 0 0 8px rgba(94, 234, 212, 0.5);
+  transition: opacity 0.4s ease;
+}
+
+.boot-overlay.boot-reveal .boot-cli,
+.boot-overlay.boot-zooming .boot-cli {
+  opacity: 0;
+}
+
+.boot-caret {
+  display: inline-block;
+  width: 9px;
+  height: 18px;
+  background-color: var(--accent);
+  vertical-align: middle;
+  margin-left: 6px;
+  animation: boot-cliBlink 1s step-end infinite;
+  box-shadow: 0 0 8px var(--accent);
+}
+
+@keyframes boot-cliBlink {
+  50% { opacity: 0; }
+}

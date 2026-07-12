@@ -1,0 +1,32 @@
+.bar-row {
+  margin-bottom: 16px;
+}
+
+.bar-head {
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-bottom: 6px;
+}
+
+.bar-head b {
+  color: var(--text);
+  font-weight: 500;
+}
+
+.bar-track {
+  height: 8px;
+  background: var(--panel-2);
+  border: 1px solid var(--line);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent-dim), var(--accent));
+  width: 0%;
+  transition: width 900ms var(--ease-out);
+}

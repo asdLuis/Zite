@@ -1,14 +1,24 @@
-import { navItems } from '../data/profile.js'
-import { motion, AnimatePresence } from 'motion/react'
+import { motion, AnimatePresence } from 'motion/react';
+import { navItems } from '../data/profile.js';
+import '../styles/Nav.css';
 
-export default function Nav({ active, onNavigate, hasAchievements = false }) {
-  // Logic: Only show the Achievements tab if it's unlocked
+///************************************************************************///
+/// Function: Nav
+/// Description: Renders the navigation menu, filtering items based on unlocks.
+/// Parameters: 
+///   { active, onNavigate, hasAchievements }
+///   active - String representing the currently active section ID.
+///   onNavigate - Function to handle navigation clicks.
+///   hasAchievements - Boolean indicating if the achievements tab should be visible.
+/// Returns: JSX.Element
+///************************************************************************///
+const Nav = ({ active, onNavigate, hasAchievements = false }) => {
   const visibleItems = navItems.filter(item => 
     !item.requiresUnlock || (item.requiresUnlock && hasAchievements)
-  )
+  );
 
   return (
-    <ul className="navlist">
+    <ul className="nav-list">
       <AnimatePresence>
         {visibleItems.map((item) => (
           <motion.li 
@@ -20,15 +30,17 @@ export default function Nav({ active, onNavigate, hasAchievements = false }) {
             style={{ overflow: 'hidden' }}
           >
             <button
-              className={`${active === item.id ? 'active' : ''} ${item.id === 'achievements' ? 'nav-achievements' : ''}`}
+              className={`nav-button ${active === item.id ? 'nav-active' : ''} ${item.id === 'achievements' ? 'nav-achievements' : ''}`}
               onClick={() => onNavigate(item.id)}
             >
-              <span className="idx">{item.index}</span>
-              <span className="side-label">{item.label}</span>
+              <span className="nav-idx">{item.index}</span>
+              <span className="nav-label">{item.label}</span>
             </button>
           </motion.li>
         ))}
       </AnimatePresence>
     </ul>
-  )
-}
+  );
+};
+
+export default Nav;

@@ -1,0 +1,83 @@
+.achievement-ach {
+  border: 1px solid var(--glass-border);
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px) saturate(160%);
+  -webkit-backdrop-filter: blur(20px) saturate(160%);
+  border-radius: var(--radius-lg);
+  box-shadow: inset 0 1px 0 var(--glass-highlight), 0 8px 24px -12px rgba(0, 0, 0, .5);
+  padding: 16px;
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  position: relative;
+  overflow: hidden;
+  transition: border-color 200ms var(--ease-out), transform 200ms var(--ease-out);
+}
+
+.achievement-ach::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 55%;
+  height: 100%;
+  background: linear-gradient(120deg, transparent, rgba(255, 255, 255, .05), transparent);
+  transform: translateX(-220%) skewX(-20deg);
+  pointer-events: none;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .achievement-ach:hover {
+    border-color: var(--amber-dim);
+    transform: translateY(-2px);
+  }
+  
+  .achievement-ach:hover::after {
+    transform: translateX(280%) skewX(-20deg);
+    transition: transform 700ms var(--ease-out);
+  }
+}
+
+.achievement-aicon {
+  width: 38px;
+  height: 38px;
+  flex-shrink: 0;
+  border: 1px solid var(--amber);
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--amber);
+  font-size: 16px;
+}
+
+.achievement-locked .achievement-aicon {
+  border-color: var(--line);
+  color: var(--text-dim);
+}
+
+.achievement-locked h4, 
+.achievement-locked p {
+  color: var(--text-dim);
+}
+
+.achievement-ach h4 {
+  font-family: var(--display);
+  font-size: 14px;
+  letter-spacing: .5px;
+  margin-bottom: 3px;
+}
+
+.achievement-ach p {
+  font-size: 12px;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+.achievement-adate {
+  font-family: var(--mono);
+  font-size: 9px;
+  color: var(--amber);
+  margin-top: 6px;
+  letter-spacing: 1px;
+}

@@ -1,0 +1,71 @@
+.background-aurora {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.background-aurora span {
+  position: absolute;
+  width: 56vw;
+  height: 56vw;
+  min-width: 420px;
+  min-height: 420px;
+  border-radius: 50%;
+  filter: blur(90px);
+  will-change: transform;
+}
+
+.background-aurora span:nth-child(1) {
+  background: radial-gradient(circle, var(--accent), transparent 70%);
+  opacity: .10;
+  top: -16%;
+  left: -12%;
+  animation: background-auroraA 28s var(--ease-in-out) infinite alternate;
+}
+
+.background-aurora span:nth-child(2) {
+  background: radial-gradient(circle, var(--amber), transparent 70%);
+  opacity: .07;
+  bottom: -18%;
+  right: -10%;
+  animation: background-auroraB 34s var(--ease-in-out) infinite alternate;
+}
+
+.background-aurora span:nth-child(3) {
+  background: radial-gradient(circle, var(--accent), transparent 70%);
+  opacity: .06;
+  top: 40%;
+  right: 20%;
+  animation: background-auroraC 40s var(--ease-in-out) infinite alternate;
+}
+
+@keyframes background-auroraA {
+  from { transform: translate(0, 0) scale(1); }
+  to { transform: translate(6vw, 8vh) scale(1.18); }
+}
+
+@keyframes background-auroraB {
+  from { transform: translate(0, 0) scale(1); }
+  to { transform: translate(-7vw, -6vh) scale(1.12); }
+}
+
+@keyframes background-auroraC {
+  from { transform: translate(0, 0) scale(1); }
+  to { transform: translate(-4vw, 10vh) scale(0.9); }
+}
+
+.background-spotlight {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background: radial-gradient(520px circle at var(--mx, 50%) var(--my, 20%), rgba(94, 234, 212, 0.05), transparent 55%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .background-aurora span {
+    animation: none;
+  }
+}

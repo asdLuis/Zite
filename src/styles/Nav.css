@@ -1,0 +1,77 @@
+.nav-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1;
+  width: 100%;
+}
+
+@media (max-width: 900px) {
+  .nav-list {
+    flex-direction: row;
+    gap: 6px;
+    width: auto;
+  }
+}
+
+.nav-button {
+  all: unset;
+  box-sizing: border-box;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  width: 100%;
+  font-family: var(--display);
+  font-size: 15px;
+  letter-spacing: 1.2px;
+  color: var(--text-muted);
+  padding: 12px 20px;
+  border-radius: 12px;
+  position: relative;
+  transition: all 250ms var(--ease-out);
+}
+
+@media (max-width: 900px) {
+  .nav-button {
+    justify-content: flex-start;
+    padding: 10px 12px;
+  }
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .nav-button:hover {
+    color: var(--text);
+    background: rgba(255, 255, 255, 0.03);
+  }
+}
+
+.nav-button.nav-active {
+  color: var(--accent);
+  background: rgba(94, 234, 212, 0.08);
+  box-shadow: inset 0 0 0 1px rgba(94, 234, 212, 0.15);
+}
+
+.nav-button:active {
+  transform: scale(0.98);
+}
+
+.nav-button:focus-visible {
+  outline: 1px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.nav-idx {
+  display: none;
+}
+
+.nav-button.nav-achievements {
+  color: var(--amber);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .nav-button.nav-achievements:hover {
+    color: var(--amber);
+  }
+}

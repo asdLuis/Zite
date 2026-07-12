@@ -3,7 +3,7 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Quest from '../ui/Quest.jsx';
 import { quests } from '../../data/profile.js';
-import '../../styles/QuestLogSection.css';
+import '../../styles/sections/QuestLogSection.css';
 
 gsap.registerPlugin(ScrollTrigger);
 

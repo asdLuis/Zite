@@ -1,5 +1,5 @@
 import { contact } from '../../data/profile.js';
-import '../../styles/ContactSection.css';
+import '../../styles/sections/ContactSection.css';
 
 ///************************************************************************///
 /// Function: ContactSection

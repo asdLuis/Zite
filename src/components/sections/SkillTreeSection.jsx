@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import Branch from '../ui/Branch.jsx';
 import { skillTree } from '../../data/profile.js';
-import '../../styles/SkillTreeSection.css';
+import '../../styles/sections/SkillTreeSection.css';
 
 ///************************************************************************///
 /// Function: SkillTreeSection

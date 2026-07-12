@@ -1,6 +1,6 @@
 import AnimatedStat from '../ui/AnimatedStat.jsx';
 import { realms } from '../../data/profile.js';
-import '../../styles/RealmsSection.css';
+import '../../styles/sections/RealmsSection.css';
 
 ///************************************************************************///
 /// Function: RealmsSection

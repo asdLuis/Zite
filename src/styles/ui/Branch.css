@@ -1,0 +1,92 @@
+.branch-container {
+  border: 1px solid var(--glass-border);
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px) saturate(160%);
+  -webkit-backdrop-filter: blur(20px) saturate(160%);
+  border-radius: var(--radius-lg);
+  box-shadow: inset 0 1px 0 var(--glass-highlight), 0 8px 24px -12px rgba(0, 0, 0, .5);
+  padding: 18px;
+  position: relative;
+  overflow: hidden;
+  transition: border-color 200ms var(--ease-out), transform 200ms var(--ease-out);
+}
+
+.branch-container::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 55%;
+  height: 100%;
+  background: linear-gradient(120deg, transparent, rgba(255, 255, 255, .05), transparent);
+  transform: translateX(-220%) skewX(-20deg);
+  pointer-events: none;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .branch-container:hover {
+    border-color: var(--accent-dim);
+    transform: translateY(-2px);
+  }
+  
+  .branch-container:hover::after {
+    transform: translateX(280%) skewX(-20deg);
+    transition: transform 700ms var(--ease-out);
+  }
+}
+
+.branch-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 14px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--line-soft);
+}
+
+.branch-icon {
+  width: 26px;
+  height: 26px;
+  border: 1px solid var(--accent-dim);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent);
+  font-family: var(--mono);
+  font-size: 11px;
+}
+
+.branch-container h3 {
+  font-family: var(--display);
+  font-size: 15px;
+  letter-spacing: .5px;
+}
+
+.branch-node {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 7px 0;
+  font-size: 13px;
+  color: var(--text);
+}
+
+.branch-pip {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accent);
+  flex-shrink: 0;
+  box-shadow: 0 0 6px rgba(94, 234, 212, .5);
+}
+
+.branch-locked {
+  color: var(--text-dim);
+}
+
+.branch-locked .branch-pip {
+  background: transparent;
+  border: 1px solid var(--line);
+  box-shadow: none;
+}

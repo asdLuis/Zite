@@ -1,0 +1,192 @@
+.quest-card {
+  display: block;
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+  border: 1px solid var(--glass-border);
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px) saturate(160%);
+  -webkit-backdrop-filter: blur(20px) saturate(160%);
+  border-radius: var(--radius-lg);
+  box-shadow: inset 0 1px 0 var(--glass-highlight), 0 8px 24px -12px rgba(0, 0, 0, .5);
+  overflow: hidden;
+}
+
+.quest-card h3 {
+  overflow-wrap: break-word;
+  word-break: break-word;
+  font-family: var(--display);
+  font-size: 16px;
+  letter-spacing: .5px;
+}
+
+.quest-summary {
+  list-style: none;
+  padding: 18px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+}
+
+.quest-left {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  min-width: 0;
+}
+
+.quest-left > div {
+  min-width: 0;
+}
+
+.quest-tag-highlight {
+  font-family: var(--mono);
+  font-size: 10px;
+  padding: 3px 8px;
+  border: 1px solid var(--accent-dim);
+  color: var(--accent);
+  border-radius: 2px;
+  letter-spacing: 1px;
+  white-space: nowrap;
+}
+
+.quest-meta {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--text-dim);
+  margin-top: 2px;
+}
+
+.quest-diff {
+  display: flex;
+  gap: 3px;
+}
+
+.quest-diff i {
+  width: 6px;
+  height: 14px;
+  background: var(--line);
+  border-radius: 1px;
+  font-style: normal;
+  display: block;
+}
+
+.quest-diff i.quest-diff-on:nth-child(1) { background: #10B981; box-shadow: 0 0 8px rgba(16, 185, 129, .35); }
+.quest-diff i.quest-diff-on:nth-child(2) { background: #84CC16; box-shadow: 0 0 8px rgba(132, 204, 22, .35); }
+.quest-diff i.quest-diff-on:nth-child(3) { background: #EAB308; box-shadow: 0 0 8px rgba(234, 179, 8, .35); }
+.quest-diff i.quest-diff-on:nth-child(4) { background: #F97316; box-shadow: 0 0 8px rgba(249, 115, 22, .35); }
+.quest-diff i.quest-diff-on:nth-child(5) { background: #EF4444; box-shadow: 0 0 8px rgba(239, 68, 68, .45); }
+
+.quest-body {
+  padding: 0 20px 22px;
+  border-top: 1px solid var(--line-soft);
+  min-width: 0;
+}
+
+.quest-row {
+  display: grid;
+  grid-template-columns: 120px minmax(0, 1fr);
+  gap: 12px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--line-soft);
+  font-size: 13px;
+}
+
+.quest-row:last-of-type {
+  border-bottom: none;
+}
+
+.quest-k {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--text-dim);
+  letter-spacing: 1px;
+  padding-top: 2px;
+}
+
+.quest-v {
+  color: var(--text);
+  line-height: 1.6;
+  min-width: 0;
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+.quest-stacklist {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  min-width: 0;
+}
+
+.quest-tag {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--text-muted);
+  border: 1px solid var(--line);
+  padding: 3px 8px;
+  border-radius: 2px;
+}
+
+.quest-status-completed {
+  color: var(--accent);
+  border-color: var(--accent-dim);
+  background: rgba(94, 234, 212, 0.08);
+}
+
+.quest-status-ongoing {
+  color: var(--amber);
+  border-color: var(--amber-dim);
+  background: rgba(245, 166, 35, 0.08);
+}
+
+.quest-links {
+  display: flex;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.quest-btn {
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: 13px;
+  letter-spacing: 1px;
+  padding: 11px 20px;
+  border-radius: 2px;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: transform 160ms var(--ease-out), box-shadow 160ms var(--ease-out), border-color 160ms var(--ease-out), color 160ms var(--ease-out);
+  border: none;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .quest-btn:hover {
+    transform: translateY(-1px);
+  }
+}
+
+.quest-btn:active {
+  transform: scale(0.97);
+}
+
+.quest-btn:focus-visible {
+  outline: 1px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.quest-btn-ghost {
+  background: transparent;
+  color: var(--text);
+  border: 1px solid var(--line);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .quest-btn-ghost:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+}

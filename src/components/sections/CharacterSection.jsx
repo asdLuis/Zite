@@ -1,6 +1,6 @@
 import FlipCard from '../ui/FlipCard.jsx';
 import { identity, character } from '../../data/profile.js';
-import '../../styles/CharacterSection.css';
+import '../../styles/sections/CharacterSection.css';
 
 ///************************************************************************///
 /// Function: CharacterSection

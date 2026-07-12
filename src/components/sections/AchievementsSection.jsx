@@ -1,6 +1,6 @@
 import { motion } from 'motion/react';
 import { achievements } from '../../data/profile.js';
-import '../../styles/AchievementsSection.css';
+import '../../styles/sections/AchievementsSection.css';
 
 ///************************************************************************///
 /// Function: AchievementsSection
