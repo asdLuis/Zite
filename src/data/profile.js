@@ -1,5 +1,5 @@
-import profilePhoto from "../../public/profile.webp";
-import resume from "../../public/LuisZamano_CV_EN_2026.pdf";
+import profilePhoto from "/profile.webp";
+import resume from "/LuisZamano_CV_EN_2026.pdf";
 
 export const identity = {
   brandName: "ZLUIS",
@@ -145,7 +145,7 @@ export const quests = [
     title: "Notary Digital Workflow Platform",
     meta: "Fullstack Web Application",
     difficulty: 5,
-    stack: ["React", "Vite", "Node.js", "Express", "MySQL", "AWS", "CI/CD", "UX/UI"],
+    stack: ["React", "Vite", "Node.js", "Express", "MySQL", "AWS", "CMMI", "CI/CD", "UX/UI"],
     problem: "Administrative workflows for notary offices were heavily manual, causing critical information retrieval to take days.",
     goal: "Transform physical processes into a centralized digital system to enable immediate access to records.",
     challenges: "Architecting a robust backend infrastructure while constantly coordinating with non-technical stakeholders to ensure the technical build aligned perfectly with their business logic.",

@@ -1,17 +1,10 @@
-export default function Quest({ quest, onToggle }) {
+export default function Quest({ quest }) {
   // Helper to dynamically assign the color class based on the status text
   const statusClass = quest.status.toLowerCase() === 'ongoing' ? 'status-ongoing' : 'status-completed'
 
   return (
-    <details className="quest" 
-    open={quest.openByDefault}
-    onToggle={(e) => {
-      if (e.target.open) {
-        onToggle(); // Fire only when opening
-      }
-    }}
-    >
-      <summary>
+    <div className="quest">
+      <div className="summary">
         <div className="qleft">
           <span className="qtag">{quest.tag}</span>
           <div>
@@ -19,15 +12,13 @@ export default function Quest({ quest, onToggle }) {
             <div className="qmeta">{quest.meta}</div>
           </div>
         </div>
-        <div style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
-          <div className="diff">
-            {[1, 2, 3, 4, 5].map((n) => (
-              <i key={n} className={n <= quest.difficulty ? 'on' : ''} />
-            ))}
-          </div>
-          <span className="chevron">▶</span>
+        <div className="diff">
+          {[1, 2, 3, 4, 5].map((n) => (
+            <i key={n} className={n <= quest.difficulty ? 'on' : ''} />
+          ))}
         </div>
-      </summary>
+      </div>
+
       <div className="qbody">
         <div className="row"><div className="k">PROBLEM</div><div className="v">{quest.problem}</div></div>
         <div className="row"><div className="k">GOAL</div><div className="v">{quest.goal}</div></div>
@@ -45,8 +36,7 @@ export default function Quest({ quest, onToggle }) {
         {quest.lessons && (
           <div className="row"><div className="k">LESSONS</div><div className="v">{quest.lessons}</div></div>
         )}
-        
-        {/* UPDATED STATUS ROW */}
+
         <div className="row">
           <div className="k">STATUS</div>
           <div className="v">
@@ -55,7 +45,7 @@ export default function Quest({ quest, onToggle }) {
             </span>
           </div>
         </div>
-        
+
         {(quest.github || quest.demo || quest.writeup || quest.front) && (
           <div className="qlinks">
             {quest.github && <a className="btn btn-ghost" href={quest.github} target="_blank">
@@ -73,6 +63,6 @@ export default function Quest({ quest, onToggle }) {
           </div>
         )}
       </div>
-    </details>
+    </div>
   )
 }

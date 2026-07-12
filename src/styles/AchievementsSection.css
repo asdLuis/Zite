@@ -1,0 +1,95 @@
+.achievements-section {
+  display: block;
+  width: 100%;
+}
+
+.achievements-eyebrow {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 3px;
+  color: var(--accent);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.achievements-eyebrow::before {
+  content: '';
+  width: 16px;
+  height: 1px;
+  background: var(--accent);
+}
+
+.achievements-title {
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: clamp(28px, 4vw, 42px);
+  letter-spacing: 1px;
+  margin-bottom: 6px;
+}
+
+.achievements-steam-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-top: 40px;
+  width: 100%;
+}
+
+.achievements-steam-card {
+  position: relative;
+  padding: 24px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  min-height: 140px;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.3s ease;
+}
+
+.achievements-steam-card h3 {
+  margin: 0 0 8px 0;
+  font-size: 16px;
+  letter-spacing: 0.5px;
+  color: var(--text);
+}
+
+.achievements-hover-desc {
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.5;
+  margin: 0;
+}
+
+.achievements-unlocked {
+  background: rgba(94, 234, 212, 0.06);
+  border: 1px solid rgba(94, 234, 212, 0.3);
+}
+
+.achievements-unlocked h3 {
+  color: var(--accent);
+}
+
+.achievements-locked {
+  background: rgba(255, 255, 255, 0.01);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  filter: grayscale(1);
+}
+
+.achievements-steam-card[data-id="secret_master"].achievements-locked {
+  filter: blur(6px) grayscale(1);
+  user-select: none;
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+.achievements-steam-card[data-id="secret_master"].achievements-unlocked {
+  background: linear-gradient(135deg, rgba(255, 215, 0, 0.15) 0%, rgba(255, 215, 0, 0.05) 100%);
+  border: 1px solid rgba(255, 215, 0, 0.4);
+}
+
+.achievements-steam-card[data-id="secret_master"].achievements-unlocked h3 {
+  color: #FFD700;
+}

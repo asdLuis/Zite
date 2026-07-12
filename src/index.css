@@ -163,7 +163,7 @@ body {
 /* ============================================================
    LAYOUT SHELL
    ============================================================ */
-.shell { display: grid; grid-template-columns: 260px 1fr; min-height: 100vh; }
+.shell { display: grid; grid-template-columns: 260px minmax(0, 1fr); min-height: 100vh; }
 @media (max-width: 900px) { .shell { grid-template-columns: 1fr; } }
 
 .sidebar {
@@ -214,7 +214,7 @@ body {
 .footer-note { width: 100%; font-family: var(--mono); font-size: 9px; color: var(--text-dim); letter-spacing: 1px; margin-top: 12px; line-height: 1.6; text-align: left; }
 .footer-note .dot { color: var(--accent); }
 
-main { padding: 40px clamp(20px, 4vw, 64px); max-width: 1180px; margin: 0 auto; }
+main { padding: 40px clamp(20px, 4vw, 64px); max-width: 1180px; margin: 0 auto; min-width: 0; }
 
 .section { display: block; width: 100%; }
 
@@ -229,12 +229,6 @@ main { padding: 40px clamp(20px, 4vw, 64px); max-width: 1180px; margin: 0 auto; 
 .statgrid > *:nth-child(6), .treewrap > *:nth-child(6) { animation-delay: 175ms; }
 .statgrid > *:nth-child(7), .treewrap > *:nth-child(7) { animation-delay: 210ms; }
 .statgrid > *:nth-child(8), .treewrap > *:nth-child(8) { animation-delay: 245ms; }
-.questlist > .quest { opacity: 0; animation: cardIn 320ms var(--ease-out) forwards; }
-.questlist > .quest:nth-child(1) { animation-delay: 0ms; }
-.questlist > .quest:nth-child(2) { animation-delay: 45ms; }
-.questlist > .quest:nth-child(3) { animation-delay: 90ms; }
-.questlist > .quest:nth-child(4) { animation-delay: 135ms; }
-.questlist > .quest:nth-child(5) { animation-delay: 180ms; }
 
 /* Achievement Pop Stagger */
 .achgrid > * { opacity: 0; transform: translateY(16px) scale(0.92); animation: achIn 560ms var(--ease-bounce) forwards; }
@@ -328,12 +322,65 @@ h1.title { font-family: var(--display); font-weight: 700; font-size: clamp(28px,
 .node.locked .pip { background: transparent; border: 1px solid var(--line); box-shadow: none; }
 
 /* QUEST LOG */
-.questlist { display: flex; flex-direction: column; align-items: stretch; gap: 14px; width: 100%; }
-.quest { width: 100%; min-width: 100%; align-self: stretch; flex-shrink: 0; box-sizing: border-box; border: 1px solid var(--glass-border); background: var(--glass-bg); backdrop-filter: blur(20px) saturate(160%); -webkit-backdrop-filter: blur(20px) saturate(160%); border-radius: var(--radius-lg); box-shadow: inset 0 1px 0 var(--glass-highlight), 0 8px 24px -12px rgba(0, 0, 0, .5); overflow: hidden; }
-.quest summary { list-style: none; cursor: pointer; padding: 18px 20px; display: flex; justify-content: space-between; align-items: center; gap: 16px; transition: background 160ms var(--ease-out); }
-@media (hover: hover) and (pointer: fine) { .quest summary:hover { background: rgba(255, 255, 255, .025); } }
-.quest summary::-webkit-details-marker { display: none; }
-.quest summary .qleft { display: flex; align-items: center; gap: 14px; }
+
+/* 3D card wheel */
+.quest-wheel-stage { position: relative; width: 100%; }
+.quest-wheel-viewport {
+  position: relative;
+  height: clamp(420px, 62vh, 620px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  perspective: 1500px;
+}
+.quest-wheel { position: relative; width: 100%; height: 100%; }
+
+.wheel-card {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: min(560px, 92%);
+  max-height: 88%;
+  overflow-y: auto;
+  transform:
+    translate(-50%, -50%)
+    translateY(calc(var(--d, 0) * 130px))
+    translateZ(calc(var(--ad, 0) * -170px))
+    rotateX(calc(var(--d, 0) * -28deg))
+    scale(calc(1 - var(--ad, 0) * 0.16));
+  opacity: clamp(0, calc(1 - var(--ad, 0) * 0.6), 1);
+  filter: blur(calc(var(--ad, 0) * 1.4px));
+  pointer-events: none;
+  transition: filter 120ms linear;
+}
+.wheel-card.is-front,
+.wheel-card.is-prev,
+.wheel-card.is-next { pointer-events: auto; }
+.wheel-card.is-prev,
+.wheel-card.is-next { cursor: pointer; }
+
+.wheel-card .qbody { opacity: 0; transition: opacity 120ms linear; }
+.wheel-card.is-front .qbody { opacity: 1; }
+.wheel-card:not(.is-front) .qlinks { pointer-events: none; }
+
+.wheel-progress {
+  display: flex;
+  justify-content: center;
+  margin-top: 18px;
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--text-dim);
+  letter-spacing: 2px;
+}
+
+/* Reduced-motion / single-quest fallback: plain static list */
+.unroll-track { display: flex; flex-direction: column; align-items: stretch; gap: 14px; width: 100%; min-width: 0; }
+.unroll-card { width: 100%; min-width: 0; }
+.quest { display: block; width: 100%; min-width: 0; box-sizing: border-box; border: 1px solid var(--glass-border); background: var(--glass-bg); backdrop-filter: blur(20px) saturate(160%); -webkit-backdrop-filter: blur(20px) saturate(160%); border-radius: var(--radius-lg); box-shadow: inset 0 1px 0 var(--glass-highlight), 0 8px 24px -12px rgba(0, 0, 0, .5); overflow: hidden; }
+.quest .summary { list-style: none; padding: 18px 20px; display: flex; justify-content: space-between; align-items: center; gap: 16px; }
+.quest .summary .qleft { display: flex; align-items: center; gap: 14px; min-width: 0; }
+.quest .summary .qleft > div { min-width: 0; }
+.quest h3 { overflow-wrap: break-word; word-break: break-word; }
 .qtag { font-family: var(--mono); font-size: 10px; padding: 3px 8px; border: 1px solid var(--accent-dim); color: var(--accent); border-radius: 2px; letter-spacing: 1px; white-space: nowrap; }
 .quest h3 { font-family: var(--display); font-size: 16px; letter-spacing: .5px; }
 .quest .qmeta { font-family: var(--mono); font-size: 10px; color: var(--text-dim); margin-top: 2px; }
@@ -344,14 +391,12 @@ h1.title { font-family: var(--display); font-weight: 700; font-size: clamp(28px,
 .diff i.on:nth-child(3) { background: #EAB308; box-shadow: 0 0 8px rgba(234, 179, 8, .35); }
 .diff i.on:nth-child(4) { background: #F97316; box-shadow: 0 0 8px rgba(249, 115, 22, .35); }
 .diff i.on:nth-child(5) { background: #EF4444; box-shadow: 0 0 8px rgba(239, 68, 68, .45); }
-.chevron { color: var(--text-dim); transition: transform .2s ease; font-family: var(--mono); }
-.quest[open] .chevron { transform: rotate(90deg); color: var(--accent); }
-.qbody { padding: 0 20px 22px; border-top: 1px solid var(--line-soft); }
-.qbody .row { display: grid; grid-template-columns: 120px 1fr; gap: 12px; padding: 12px 0; border-bottom: 1px solid var(--line-soft); font-size: 13px; }
+.qbody { padding: 0 20px 22px; border-top: 1px solid var(--line-soft); min-width: 0; }
+.qbody .row { display: grid; grid-template-columns: 120px minmax(0, 1fr); gap: 12px; padding: 12px 0; border-bottom: 1px solid var(--line-soft); font-size: 13px; }
 .qbody .row:last-of-type { border-bottom: none; }
 .qbody .row .k { font-family: var(--mono); font-size: 10px; color: var(--text-dim); letter-spacing: 1px; padding-top: 2px; }
-.qbody .row .v { color: var(--text); line-height: 1.6; }
-.stacklist { display: flex; flex-wrap: wrap; gap: 6px; }
+.qbody .row .v { color: var(--text); line-height: 1.6; min-width: 0; overflow-wrap: break-word; word-break: break-word; }
+.stacklist { display: flex; flex-wrap: wrap; gap: 6px; min-width: 0; }
 .qlinks { display: flex; gap: 10px; margin-top: 14px; }
 
 /* LEGACY ACHIEVEMENTS */

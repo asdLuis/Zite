@@ -1,0 +1,49 @@
+.quest-log-section {
+  display: block;
+  width: 100%;
+}
+
+.quest-log-eyebrow {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 3px;
+  color: var(--accent);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.quest-log-eyebrow::before {
+  content: '';
+  width: 16px;
+  height: 1px;
+  background: var(--accent);
+}
+
+.quest-log-subtitle {
+  color: var(--text-muted);
+  font-size: 14px;
+  max-width: 560px;
+  margin-bottom: 32px;
+  line-height: 1.6;
+}
+
+.quest-log-unroll-stage {
+  position: relative;
+  width: 100%;
+}
+
+.quest-log-unroll-track {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 14px;
+  width: 100%;
+  min-width: 0;
+}
+
+.quest-log-unroll-card {
+  width: 100%;
+  min-width: 0;
+}
