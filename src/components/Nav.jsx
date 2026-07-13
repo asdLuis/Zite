@@ -18,14 +18,15 @@ const Nav = ({ active, onNavigate, hasAchievements = false }) => {
   );
 
   return (
-    <ul className="nav-list">
+    <motion.ul className="nav-list" layout>
       <AnimatePresence>
         {visibleItems.map((item) => (
           <motion.li 
             key={item.id}
-            initial={{ opacity: 0, height: 0, scale: 0.9, y: -10 }}
-            animate={{ opacity: 1, height: 'auto', scale: 1, y: 0 }}
-            exit={{ opacity: 0, height: 0, scale: 0.9, y: -10 }}
+            layout
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.9 }}
             transition={{ type: 'spring', stiffness: 300, damping: 24 }}
             style={{ overflow: 'hidden' }}
           >
@@ -39,7 +40,7 @@ const Nav = ({ active, onNavigate, hasAchievements = false }) => {
           </motion.li>
         ))}
       </AnimatePresence>
-    </ul>
+</motion.ul>
   );
 };
 

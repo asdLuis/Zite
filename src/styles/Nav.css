@@ -9,9 +9,9 @@
 
 @media (max-width: 900px) {
   .nav-list {
-    flex-direction: row;
-    gap: 6px;
-    width: auto;
+    flex-direction: column;
+    gap: 4px;
+    width: 100%;
   }
 }
 
@@ -31,12 +31,24 @@
   border-radius: 12px;
   position: relative;
   transition: all 250ms var(--ease-out);
+  white-space: nowrap;
 }
 
 @media (max-width: 900px) {
   .nav-button {
     justify-content: flex-start;
-    padding: 10px 12px;
+    padding: 10px 14px;
+    font-size: 13px;
+    letter-spacing: 0.8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .nav-button {
+    padding: 7px 10px;
+    font-size: 11.5px;
+    letter-spacing: 0.3px;
+    gap: 6px;
   }
 }
 
