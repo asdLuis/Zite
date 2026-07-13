@@ -19,8 +19,8 @@
 
 @media (max-width: 900px) {
   .sidebar-container {
-    position: relative;
-    top: 0;
+    position: sticky;
+    top: 12px;
     height: auto;
     width: auto;
     margin: 12px;
@@ -30,6 +30,7 @@
     overflow-x: visible;
     padding: 16px 14px;
     gap: 0;
+    z-index: 50;
   }
 }
 
