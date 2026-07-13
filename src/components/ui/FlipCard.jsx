@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { motion, useMotionValue, useSpring, useTransform } from 'motion/react';
 import '../../styles/ui/FlipCard.css';
 
@@ -26,6 +26,15 @@ const FlipCard = ({
   const ref = useRef(null);
   const [hovering, setHovering] = useState(false);
   const [flipped, setFlipped] = useState(false);
+  const suppressed = useRef(true);
+
+  useEffect(() => {
+    suppressed.current = true;
+    const timer = setTimeout(() => {
+      suppressed.current = false;
+    }, 500);
+    return () => clearTimeout(timer);
+  }, []);
 
   const px = useMotionValue(0.5);
   const py = useMotionValue(0.5);
@@ -37,15 +46,18 @@ const FlipCard = ({
   const flipY = useSpring(flipTarget, { stiffness: 220, damping: 26 });
   const rotateY = useTransform([flipY, tiltY], ([f, t]) => f + t);
 
-  const holoPos = useTransform([px, py], ([x, y]) => `${x * 200}% ${y * 200}%`);
-  const holoBackground = useTransform(holoPos, () => `linear-gradient(115deg,
+  const holoAngle = useTransform([px, py], ([x, y]) => {
+    const dx = x - 0.5;
+    const dy = y - 0.5;
+    return (Math.atan2(dy, dx) * 180) / Math.PI + 90;
+  });
+
+  const holoBackground = useTransform(holoAngle, (angle) => `conic-gradient(
+    from ${angle}deg in oklch longer hue,
     hsla(0,100%,68%,1) 0%,
-    hsla(55,100%,68%,1) 20%,
-    hsla(120,100%,62%,1) 40%,
-    hsla(190,100%,62%,1) 60%,
-    hsla(260,100%,68%,1) 80%,
-    hsla(330,100%,68%,1) 100%)`);
-  
+    hsla(360,100%,68%,1) 100%
+  )`);
+
   const glareBackground = useTransform([px, py], ([x, y]) =>
     `radial-gradient(circle at ${x * 100}% ${y * 100}%, rgba(255,255,255,0.12), transparent 55%)`
   );
@@ -64,6 +76,17 @@ const FlipCard = ({
     const rect = ref.current.getBoundingClientRect();
     px.set((e.clientX - rect.left) / rect.width);
     py.set((e.clientY - rect.top) / rect.height);
+  };
+
+  ///************************************************************************///
+  /// Function: handleEnter
+  /// Description: Activates hover state unless within the post-mount suppression window.
+  /// Parameters: None
+  /// Returns: void
+  ///************************************************************************///
+  const handleEnter = () => {
+    if (suppressed.current) return;
+    setHovering(true);
   };
 
   ///************************************************************************///
@@ -126,7 +149,6 @@ const FlipCard = ({
             style={{
               border: `${holoBorder}px solid transparent`,
               backgroundImage: holoBackground,
-              backgroundPosition: holoPos,
             }}
             animate={{ opacity: hovering ? 1 : 0 }}
             transition={{ duration: 0.25 }}
@@ -145,7 +167,7 @@ const FlipCard = ({
         aria-label="Flip card"
         className="flip-card-wrapper"
         onMouseMove={handleMove}
-        onMouseEnter={() => setHovering(true)}
+        onMouseEnter={handleEnter}
         onMouseLeave={handleLeave}
         onClick={toggleFlip}
         onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && toggleFlip()}
