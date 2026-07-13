@@ -37,6 +37,17 @@
   width: 100%;
 }
 
+@media (max-width: 820px) {
+  .achievements-steam-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 520px) {
+  .achievements-steam-grid {
+    grid-template-columns: 1fr;
+  }
+}
 .achievements-steam-card {
   position: relative;
   padding: 24px;
