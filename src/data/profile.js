@@ -18,7 +18,7 @@ export const character = {
     { k: "EDUCATION", v: "B.S. Computer Science, 2026" },
     { k: "LOCATION", v: "Querétaro, Mexico (Remote-friendly)" },
     { k: "AVAILABILITY", v: "Available for full-time opportunities" },
-    { k: "WORKING ON", v: "System Building & Cybersecurity" },
+    { k: "WORKING ON", v: "System Design & Cybersecurity" },
     { k: "EXPERIENCE", v: "4 years" },
   ],
   resumeUrl: resume,
