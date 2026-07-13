@@ -32,12 +32,12 @@ const Boot = ({ phase, setPhase }) => {
         setText(currentText);
         charIndex++;
 
-        const charSpeed = 25;
-        const lineBreakPause = 400;
+        const charSpeed = 20;
+        const lineBreakPause = 0;
         const delay = fullString[charIndex - 1] === '\n' ? lineBreakPause : charSpeed;
         setTimeout(typeChar, delay);
       } else {
-        setTimeout(() => setPhase('reveal'), 800);
+        setTimeout(() => setPhase('reveal'), 400);
       }
     };
 
@@ -47,11 +47,11 @@ const Boot = ({ phase, setPhase }) => {
 
   useEffect(() => {
     if (phase === 'reveal') {
-      const t = setTimeout(() => setPhase('zooming'), 1000);
+      const t = setTimeout(() => setPhase('zooming'), 300);
       return () => clearTimeout(t);
     }
     if (phase === 'zooming') {
-      const t = setTimeout(() => setPhase('done'), 1200);
+      const t = setTimeout(() => setPhase('done'), 0);
       return () => clearTimeout(t);
     }
   }, [phase, setPhase]);
