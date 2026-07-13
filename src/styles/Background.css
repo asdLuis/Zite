@@ -69,3 +69,13 @@
     animation: none;
   }
 }
+
+.background-aurora,
+.background-spotlight {
+  opacity: 0;
+  animation: background-fadeIn 1.2s ease forwards;
+}
+
+@keyframes background-fadeIn {
+  to { opacity: 1; }
+}

@@ -114,8 +114,7 @@ export default function App() {
 
   return (
     <>
-      <Background />
-      
+      {bootPhase !== 'typing' && <Background />}
       {bootPhase !== 'done' && <Boot phase={bootPhase} setPhase={setBootPhase} />}
       
       <div className={`app-env ${bootPhase}`}>
