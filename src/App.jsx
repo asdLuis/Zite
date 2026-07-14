@@ -87,11 +87,12 @@ export default function App() {
     }, 1500); 
 
     const devToolsDetector = () => {
-      if (window.outerWidth - window.innerWidth > 160 || window.outerHeight - window.innerHeight > 160) {
-        handleUnlock('dev_mode', 'ACHIEVEMENT UNLOCKED', 'Dev Mode — Investigating the source');
-      }
-    };
-    window.addEventListener('resize', devToolsDetector);
+          if (window.innerWidth <= 768) return;
+          if (window.outerWidth - window.innerWidth > 160 || window.outerHeight - window.innerHeight > 160) {
+            handleUnlock('dev_mode', 'ACHIEVEMENT UNLOCKED', 'Dev Mode — Investigating the source');
+          }
+        };
+        window.addEventListener('resize', devToolsDetector);
 
     const konamiCode = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];
     let konamiIndex = 0;
