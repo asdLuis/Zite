@@ -31,10 +31,11 @@
 }
 
 .quest-log-carousel-body {
+  --quest-stage-h: clamp(480px, 70vh, 760px);
   display: grid;
   grid-template-columns: 28px minmax(0, 1fr);
   gap: 20px;
-  height: clamp(480px, 70vh, 760px);
+  height: var(--quest-stage-h);
 }
 
 .quest-log-rail {
@@ -126,6 +127,12 @@
   scroll-snap-align: center;
   transform-origin: 50% 50%;
   transition: filter 60ms linear;
+}
+
+@media (min-width: 721px) {
+  .quest-log-carousel-card {
+    max-height: var(--quest-stage-h);
+  }
 }
 
 .quest-log-carousel-card.is-focused .quest-card {

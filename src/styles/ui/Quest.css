@@ -1,7 +1,9 @@
 .quest-card {
-  display: block;
+  display: flex;
+  flex-direction: column;
   width: 100%;
   min-width: 0;
+  max-height: 100%;
   box-sizing: border-box;
   border: 1px solid var(--glass-border);
   background: var(--glass-bg);
@@ -27,6 +29,7 @@
   justify-content: space-between;
   align-items: center;
   gap: 16px;
+  flex-shrink: 0;
 }
 
 .quest-left {
@@ -82,6 +85,15 @@
   padding: 0 20px 22px;
   border-top: 1px solid var(--line-soft);
   min-width: 0;
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+
+.quest-body::-webkit-scrollbar {
+  display: none;
 }
 
 .quest-row {

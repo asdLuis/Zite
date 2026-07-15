@@ -22,7 +22,7 @@
 
 @media (max-width: 900px) {
   .sidebar-container {
-    position: sticky;
+    position: static;
     top: 12px;
     height: auto;
     width: auto;
