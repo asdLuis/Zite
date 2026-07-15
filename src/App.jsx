@@ -86,14 +86,6 @@ export default function App() {
       if (hour >= 1 && hour <= 5) handleUnlock('night_owl', 'ACHIEVEMENT UNLOCKED', 'Night Owl — Browsing after hours');
     }, 1500); 
 
-    const devToolsDetector = () => {
-          if (window.innerWidth <= 768) return;
-          if (window.outerWidth - window.innerWidth > 160 || window.outerHeight - window.innerHeight > 160) {
-            handleUnlock('dev_mode', 'ACHIEVEMENT UNLOCKED', 'Dev Mode — Investigating the source');
-          }
-        };
-        window.addEventListener('resize', devToolsDetector);
-
     const konamiCode = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];
     let konamiIndex = 0;
     const handleKeyDown = (e) => {
@@ -109,7 +101,6 @@ export default function App() {
 
     return () => {
       window.removeEventListener('keydown', handleKeyDown);
-      window.removeEventListener('resize', devToolsDetector);
       clearTimeout(bootDelay);
     };
   }, [bootPhase]); 

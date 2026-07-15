@@ -285,7 +285,6 @@ export const navItems = [
 export const achievements = [
   { id: 'explorer', title: 'Cartographer', desc: 'Visited every core section of the site.' },
   { id: 'night_owl', title: 'Night Owl', desc: 'Browsed the logs between 1 AM and 5 AM.' },
-  { id: 'dev_mode', title: 'Dev Mode', desc: 'Opened the developer console while browsing.' },
   { id: 'fullstack', title: 'Fullstack Journeyman', desc: 'Spent more than 60 seconds analyzing the Skill Tree.' },
   { id: 'completionist', title: 'Completionist', desc: 'Expanded every single quest in the log.' },
   { id: 'artist', title: 'Artisan', desc: 'Spent time inspecting the 3D model showcase.' },
