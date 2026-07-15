@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { AnimatePresence, motion } from 'motion/react'
 import { Analytics } from '@vercel/analytics/react'
 import { SpeedInsights } from '@vercel/speed-insights/react';
@@ -34,6 +34,8 @@ export default function App() {
   
   const [bootPhase, setBootPhase] = useState('typing');
 
+  const appEnvRef = useRef(null);
+
   ///************************************************************************///
   /// Function: handleUnlock
   /// Description: Handles unlocking achievements and checking for completionist status.
@@ -64,13 +66,24 @@ export default function App() {
 
   ///************************************************************************///
   /// Function: handleNavigate
-  /// Description: Updates the active section and tracks visited sections.
+  /// Description: Updates the active section, tracks visited sections, and
+  ///              resets the scroll container to the top. The reset is required
+  ///              because .app-env (not body) is the scrolling ancestor for the
+  ///              sticky sidebar; navigating from a tall section to a shorter
+  ///              one while scrolled down leaves Safari holding a scrollTop
+  ///              past the new document's end, which causes it to botch the
+  ///              sticky-sidebar repaint (seen as a stretched glass box on
+  ///              iPad portrait). Resetting scroll on navigate prevents Safari
+  ///              from ever landing in that state.
   /// Parameters: id - String representing the section ID.
   /// Returns: void
   ///************************************************************************///
   const handleNavigate = (id) => {
     setActive(id);
     setVisited((prev) => new Set(prev).add(id));
+    if (appEnvRef.current) {
+      appEnvRef.current.scrollTo({ top: 0, behavior: 'instant' });
+    }
   };
 
   useEffect(() => {
@@ -110,7 +123,7 @@ export default function App() {
       {bootPhase !== 'typing' && <Background />}
       {bootPhase !== 'done' && <Boot phase={bootPhase} setPhase={setBootPhase} />}
       
-      <div className={`app-env ${bootPhase}`}>
+      <div className={`app-env ${bootPhase}`} ref={appEnvRef}>
         <div className={`shell ${isShaking ? 'shake-impact' : ''}`}>
           <Sidebar active={active} onNavigate={handleNavigate} hasAchievements={unlockedAchievements.length > 0} bootPhase={bootPhase} />
           

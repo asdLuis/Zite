@@ -36,6 +36,8 @@
   display: grid; 
   grid-template-columns: 260px minmax(0, 1fr); 
   min-height: 100vh; 
+  align-content: start;
+  align-items: start;
 }
 
 @media (max-width: 900px) { 

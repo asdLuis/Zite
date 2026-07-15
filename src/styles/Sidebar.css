@@ -15,6 +15,9 @@
   padding: 22px 18px;
   z-index: 50;
   width: 100%;
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+  contain: layout paint;
 }
 
 @media (max-width: 900px) {
