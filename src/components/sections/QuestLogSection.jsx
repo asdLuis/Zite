@@ -79,19 +79,23 @@ const QuestLogSection = ({ handleUnlock }) => {
 
     ///************************************************************************///
     /// Function: updateTrackPadding
-    /// Description: Sets the track's bottom padding to the exact amount needed
-    ///              for the last card's center to reach the stage's center —
-    ///              no more, no less — so the max scroll position lands
-    ///              exactly on the last card's snap point with no leftover
-    ///              scrollable space past it. Only meaningful in carousel mode.
+    /// Description: Sets the track's top and bottom padding to the exact amount
+    ///              needed for the first and last card's centers to reach the
+    ///              stage's center — no more, no less — so the min and max
+    ///              scroll positions land exactly on the first/last card's snap
+    ///              points with no leftover scrollable space before or past
+    ///              them. Only meaningful in carousel mode.
     /// Parameters: none
     /// Returns: void
     ///************************************************************************///
     const updateTrackPadding = () => {
+      const firstCard = cards[0];
       const lastCard = cards[cards.length - 1];
       const stageHeight = stage.clientHeight;
-      const pad = Math.max(stageHeight / 2 - lastCard.offsetHeight / 2, 0);
-      track.style.paddingBottom = `${pad}px`;
+      const topPad = Math.max(stageHeight / 2 - firstCard.offsetHeight / 2, 0);
+      const bottomPad = Math.max(stageHeight / 2 - lastCard.offsetHeight / 2, 0);
+      track.style.paddingTop = `${topPad}px`;
+      track.style.paddingBottom = `${bottomPad}px`;
     };
 
     ///************************************************************************///
